@@ -1,0 +1,24 @@
+{
+    "name": "NukiClientESP",
+    "keywords": "nuki, nuki.io, smarthome, smartlock",
+    "description": "Library for accessing the nuki smartlock with an ESP8266. I am not affiliated with Nuki Home Solutions, this not an official library, NUKI is a trademark of Nuki Home Solutions.",
+    "homepage": "https://github.com/thexperiments/NukiClientESP",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/thexperiments/NukiClientESP.git"
+    },
+    "version": "0.0.1",
+    "authors": {
+      "name": "Lukas Reinhart",
+      "url": "https://thexperiments.com"
+    },
+    "frameworks": "arduino",
+    "platforms": "*",
+    "dependencies":
+    [
+        {
+            "name": "ArduinoJson",
+            "version": "~5.13.4"
+        }
+    ]
+  }

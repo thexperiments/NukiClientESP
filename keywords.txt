@@ -1,0 +1,53 @@
+NUKI_lock_states	KEYWORD1
+state_uncalibrated	LITERAL1
+state_locked	LITERAL1
+state_unlocking	LITERAL1
+state_unlocked	LITERAL1
+state_locking	LITERAL1
+state_unlatched	LITERAL1
+state_unlocked_lockngo	LITERAL1
+state_unlatching	LITERAL1
+state_motor_blocked	LITERAL1
+state_undefined	LITERAL1
+
+NUKI_lock_actions	KEYWORD1
+action_unlock	LITERAL1
+action_lock	LITERAL1
+action_unlatch	LITERAL1
+action_lockngo	LITERAL1
+action_lockngo_with_unlatch	LITERAL1
+
+NUKI_http_responses	KEYWORD1
+response_invalid_action	LITERAL1
+response_invalid_token	LITERAL1
+response_authentication_disabled	LITERAL1
+response_samrtlock_unknown	LITERAL1
+response_smartlock_offline	LITERAL1
+
+NukiClientESP	KEYWORD1
+
+#####################################################################################
+## Functions for setting up the Library
+#####################################################################################
+discoverBridges	KEYWORD2
+authenticateBridge	KEYWORD2
+useBridge	KEYWORD2
+useBridgeAuthToken	KEYWORD2
+
+discoverLocks	KEYWORD2
+useLock	KEYWORD2
+
+#####################################################################################
+## Functions for controlling the lock
+#####################################################################################
+triggerLockAction	KEYWORD2
+lock	KEYWORD2
+unlock	KEYWORD2
+unlatch	KEYWORD2
+
+#####################################################################################
+## Functions for getting the lock state
+#####################################################################################
+NUKI_lock_states getLockState	KEYWORD2
+isLocked	KEYWORD2
+getBridgeInfo	KEYWORD2
