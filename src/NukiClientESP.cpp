@@ -51,7 +51,7 @@ bool NukiClientESP::authenticateBridge(String &token){
     String responseString;
     StaticJsonBuffer<1024> jsonBuffer;
 
-    Serial.printf("Authenticating with Bridge %s\n", _currentBridgeIP.c_str());
+    Serial.printf("Authenticating with bridge %s\n", _currentBridgeIP.c_str());
     int httpResponseCode = _doAPIRequest(request,responseString);
     JsonObject& root = jsonBuffer.parseObject(responseString);
     
@@ -71,6 +71,24 @@ void NukiClientESP::useBridge(String bridgeIp, uint bridgePort){
 
 void NukiClientESP::useBridgeAuthToken(String bridgeAuthToken){
     _currentBridgeAuthToken = bridgeAuthToken;
+}
+
+bool NukiClientESP::getBridgeInfo(String &bridgeInfoJSON){
+    String request = _fillAPITemplate(_NUKI_API_ENDPOINT_BRIDGEINFO);
+    String responseString;
+    StaticJsonBuffer<1024> jsonBuffer;
+
+    Serial.printf("Getting info from bridge %s\n", _currentBridgeIP.c_str());
+    int httpResponseCode = _doAPIRequest(request,responseString);
+    JsonObject& root = jsonBuffer.parseObject(responseString);
+    
+    if (httpResponseCode == 200) {
+        root.prettyPrintTo(bridgeInfoJSON);
+        Serial.printf("Info:\n%s\n", bridgeInfoJSON.c_str());
+        return true;
+    }
+
+    return false;
 }
 
 void NukiClientESP::useLock(uint lockID){
@@ -157,7 +175,7 @@ String NukiClientESP::_fillAPITemplate(String apiTemplate){
 int NukiClientESP::_doAPIRequest(String requestURL, String& responseString, String SSLfingerprint){
     int retries = 0;
     int httpCode = -255;
-    Serial.printf("Request URL: %s\n", requestURL.c_str());
+    //Serial.printf("Request URL: %s\n", requestURL.c_str());
     if (SSLfingerprint == ""){
         _http.begin(requestURL);
     }
@@ -188,7 +206,7 @@ int NukiClientESP::_doAPIRequest(String requestURL, String& responseString, Stri
     }
 
     _http.end();
-    Serial.println(responseString.c_str());
-    Serial.println(httpCode);
+    //Serial.println(responseString.c_str());
+    //Serial.println(httpCode);
     return httpCode;
 }
