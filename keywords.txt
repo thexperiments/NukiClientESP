@@ -48,6 +48,6 @@ unlatch	KEYWORD2
 #####################################################################################
 ## Functions for getting the lock state
 #####################################################################################
-NUKI_lock_states getLockState	KEYWORD2
+getLockState	KEYWORD2
 isLocked	KEYWORD2
 getBridgeInfo	KEYWORD2
